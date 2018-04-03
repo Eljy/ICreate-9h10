@@ -43,6 +43,8 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     private SensorEventListener mySensorListener;
     // X,Y coordinates of circle
     private int arc_x, arc_y;
+    private int count;
+    private int tem_x,tem_y;
     //x,y,z of sensor
     private float x = 0, y = 0, z = 0;
     //ArrayList al = new ArrayList();
@@ -63,8 +65,8 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
         paint.setAntiAlias(true);
         setFocusable(true);
 
-        setZOrderOnTop(true);//使surfaceview放到最顶层
-        getHolder().setFormat(PixelFormat.TRANSLUCENT);//使窗口支持透明度
+        setZOrderOnTop(true);//Put the surfaceview at the top
+        getHolder().setFormat(PixelFormat.TRANSLUCENT);//Make windows support transparency
 
         sm = (SensorManager) SenActivity.instance.getSystemService(Service.SENSOR_SERVICE);
         //instance of gravity sensor
@@ -116,11 +118,12 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 //canvas.drawColor(Color.BLACK);
                 canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                 paint.setColor(Color.RED);
-
                 if(arc_x<0) arc_x = 0;
                 if(arc_x>screenW-50) arc_x = screenW-50;
                 if(arc_y<0) arc_y=0;
                 if(arc_y>screenH-50) arc_y = screenH-50;
+                tem_x = arc_x;
+                tem_y = arc_y;
                 canvas.drawArc(new RectF(arc_x, arc_y, arc_x + 50, arc_y + 50), 0, 360, true, paint);
                 /*
                 if (al.size()>1000) {
@@ -142,10 +145,18 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
         try {
             canvas = sfh.lockCanvas();
             if (canvas != null) {
-
                 //canvas.drawColor(Color.BLACK);
+                //to resolve the first point flash problem
+                //clean the screen and initial the point 5 times
+                if(flag_pause){
+                    if(count <= 0) flag_pause = false;
+                    arc_x = tem_x;
+                    arc_y = tem_y;
+                    canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                    count--;
+                }
+                //draw the points
                 paint.setColor(Color.RED);
-
                 if(arc_x<0) arc_x = 0;
                 if(arc_x>screenW-50) arc_x = screenW-50;
                 if(arc_y<0) arc_y=0;
@@ -172,10 +183,14 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {//Touch screen information
+        switch (event.getAction()) {     // Get touch screen information
             //put down fingers
             case MotionEvent.ACTION_DOWN:
                 flag_touch = true;
+                //Make points continuous
+                flag_pause = true;
+                count = 5;
+                //if(flag_pause) {sleep(100);logic();}
                 break;
             //move the fingers
             //case MotionEvent.ACTION_MOVE:
@@ -220,8 +235,6 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
             if (canvas != null) {
                 //canvas.drawColor(Color.BLACK);
                 canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-                sleep(200);
-
             }
         } catch (Exception e) {
             // TODO: handle exception
