@@ -7,6 +7,7 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -37,7 +38,15 @@
         <activity android:name=".Video2Activity" />
         <activity android:name=".Sen2Activity" />
         <activity android:name=".Cong2Activity" />
-        <activity android:name=".VideoLastActivity"></activity>
+        <activity android:name=".VideoLastActivity" />
+        <activity android:name=".SocketActivity" />
+        <activity android:name=".VideoMain2Activity" />
+        <activity android:name=".Videonfc1Activity" />
+        <activity android:name=".Videonfc2Activity" />
+        <activity android:name=".Video2Sen2Activity" />
+        <activity android:name=".VideoLast1Activity" />
+        <activity android:name=".VideoLast2Activity" />
+        <activity android:name=".VideoLast3Activity"></activity>
     </application>
 
 </manifest>

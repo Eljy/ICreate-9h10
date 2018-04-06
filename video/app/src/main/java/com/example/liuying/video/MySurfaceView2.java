@@ -69,7 +69,7 @@ public class MySurfaceView2 extends SurfaceView implements SurfaceHolder.Callbac
     }
 
     public void init() {
-        setBackgroundResource(R.drawable.background);
+        setBackgroundResource(R.drawable.photo2);
         sfh = this.getHolder();
         sfh.addCallback(this);
         paint = new Paint();

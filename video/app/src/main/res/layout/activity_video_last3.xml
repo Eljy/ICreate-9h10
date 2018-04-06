@@ -4,32 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VideoLastActivity">
+    tools:context=".VideoLast3Activity">
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <com.example.liuying.video.CustomVideoView
             android:id="@+id/videoview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/nfc"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_last3next"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/game2"
             android:layout_alignParentBottom="true"
-            android:text="NFC"
-            android:onClick="nfc" />
-
-        <Button
-            android:id="@+id/game2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:text="JEUX"
-            android:onClick="game2" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="56dp"
+            android:text="SUIVANTE"
+            android:onClick="last3next"/>
 
     </RelativeLayout>
+
+
 </android.support.constraint.ConstraintLayout>

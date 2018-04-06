@@ -6,16 +6,16 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-public class Video2Activity extends AppCompatActivity implements View.OnClickListener{
+public class Videonfc2Activity extends AppCompatActivity {
+
 
     private CustomVideoView videoview;
-    private Button btn_next3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video2);
+        setContentView(R.layout.activity_videonfc2);
         initView();
     }
 
@@ -23,12 +23,10 @@ public class Video2Activity extends AppCompatActivity implements View.OnClickLis
      * initialization
      */
     private void initView() {
-        btn_next3 = (Button) findViewById(R.id.btn_next3);
-        btn_next3.setOnClickListener(this);
 
         videoview = (CustomVideoView) findViewById(R.id.videoview);
         //set the path of video
-        videoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.fiveinfo1));
+        videoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.tuto4));
         //play
         videoview.start();
         //Play repeatedly
@@ -41,14 +39,8 @@ public class Video2Activity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_next3:
-                Intent intent = new Intent(this, Video2Sen2Activity.class);
-                startActivity(intent);
-                //Toast.makeText(this,"NEXT PAGE!",Toast.LENGTH_SHORT).show();
-                break;
-        }
+    public void nfc2next(View view){
+        Intent intent = new Intent(this, SenActivity.class);
+        startActivity(intent);
     }
 }

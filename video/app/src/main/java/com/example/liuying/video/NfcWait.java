@@ -32,7 +32,7 @@ public class NfcWait extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_vali:
-                Intent intent = new Intent(this, SenActivity.class);
+                Intent intent = new Intent(this, Videonfc1Activity.class);
                 startActivity(intent);
                 break;
         }

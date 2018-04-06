@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         videoview = (CustomVideoView) findViewById(R.id.videoview);
         //set the path of video
-        videoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.test));
+        videoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.introduction1));
         //play
         videoview.start();
         //Play repeatedly
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_start:
-                Intent intent = new Intent(this, NfcWait.class);
+                Intent intent = new Intent(this, VideoMain2Activity.class);
                 startActivity(intent);
                 //Toast.makeText(this,"NEXT PAGE!",Toast.LENGTH_SHORT).show();
                 break;

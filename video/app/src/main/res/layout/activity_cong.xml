@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bravoss"
-        android:background="@drawable/background"
+        android:background="@drawable/photo2"
         />
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:id="@+id/tx_goodgame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Good Game!"
+        android:text="BRAVO !"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="65sp"
@@ -29,7 +29,7 @@
             android:id="@+id/btn_next2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="SUIVANTE"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:onClick="nextBt2" />

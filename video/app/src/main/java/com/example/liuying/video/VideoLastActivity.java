@@ -25,7 +25,7 @@ public class VideoLastActivity extends AppCompatActivity {
 
         videoview = (CustomVideoView) findViewById(R.id.videoview);
         //set the path of video
-        videoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.test));
+        videoview.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.fiveinfo6));
         //play
         videoview.start();
         //Play repeatedly

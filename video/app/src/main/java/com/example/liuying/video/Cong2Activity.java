@@ -30,7 +30,7 @@ public class Cong2Activity extends AppCompatActivity {
 
     }
     public void btcong2(View view){
-        Intent intent = new Intent(this, VideoLastActivity.class);
+        Intent intent = new Intent(this, VideoLast1Activity.class);
         startActivity(intent);
     }
 }

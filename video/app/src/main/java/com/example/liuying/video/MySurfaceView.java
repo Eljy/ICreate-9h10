@@ -35,6 +35,8 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     private boolean flag_pause;
     private boolean flag_touch;
     private boolean flag_stop;
+    private boolean flag_sentPoint;
+    private MySocket msocket;
     private Canvas canvas;
     private int screenW, screenH;
     //SensorManager
@@ -69,12 +71,17 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void init() {
-        setBackgroundResource(R.drawable.background);
+        msocket = new MySocket();
+        msocket.connect();
+
+        setBackgroundResource(R.drawable.photo2);
         sfh = this.getHolder();
         sfh.addCallback(this);
         paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setAntiAlias(true);
+
+
 
 
         eraser = new Paint();
@@ -120,6 +127,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
         flag_pause = true;
         flag_touch = false;
         flag_stop = false;
+        flag_sentPoint = false;
         shadow_size = (int)(Math.random()*150)+350;
         shadow_x = shadow_size+(int)(Math.random()*(screenW-2*shadow_size));
         shadow_y = shadow_size+(int)(Math.random()*(screenH-2*shadow_size));
@@ -155,6 +163,8 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 }
                 al.add(new Pair(arc_x,arc_y));
                 */
+                //String tmp = String.valueOf(arc_x)+","+String.valueOf(arc_y);
+                //msocket.forSendMessage(tmp);
             }
         } catch (Exception e) {
             // TODO: handle exception
@@ -201,7 +211,11 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 if(arc_y<0) arc_y=0;
                 if(arc_y>screenH-50) arc_y = screenH-50;
                 canvas.drawArc(new RectF(arc_x, arc_y, arc_x + 50, arc_y + 50), 0, 360, true, eraser);
-
+                flag_sentPoint = !flag_sentPoint;
+                if(flag_sentPoint){
+                msocket.forSendMessage(String.valueOf(arc_x)+","+String.valueOf(arc_y)+";");
+                }
+                //socketA.forSendMessage(String.valueOf(arc_x)+","+String.valueOf(arc_y));
                 /*
                 if (al.size()>1000) {
                     al.remove(0);
