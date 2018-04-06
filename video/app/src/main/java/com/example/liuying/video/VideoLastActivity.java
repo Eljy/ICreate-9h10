@@ -7,16 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
+public class VideoLastActivity extends AppCompatActivity {
     private CustomVideoView videoview;
-    private Button btn_start;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_video_last);
         initView();
     }
 
@@ -24,8 +22,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * initialization
      */
     private void initView() {
-        btn_start = (Button) findViewById(R.id.btn_start);
-        btn_start.setOnClickListener(this);
 
         videoview = (CustomVideoView) findViewById(R.id.videoview);
         //set the path of video
@@ -42,14 +38,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_start:
-                Intent intent = new Intent(this, NfcWait.class);
-                startActivity(intent);
-                //Toast.makeText(this,"NEXT PAGE!",Toast.LENGTH_SHORT).show();
-                break;
-        }
+    public void game2(View view){
+        Intent intent = new Intent(this, Sen2Activity.class);
+        startActivity(intent);
     }
+    public void nfc(View view){
+        Intent intent = new Intent(this, NfcWait.class);
+        startActivity(intent);
+    }
+
+
 }

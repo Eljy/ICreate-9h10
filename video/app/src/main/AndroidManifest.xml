@@ -31,7 +31,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".NfcWait"></activity>
+        <activity android:name=".NfcWait" />
+        <activity android:name=".CanvasActivity" />
+        <activity android:name=".CongActivity" />
+        <activity android:name=".Video2Activity" />
+        <activity android:name=".Sen2Activity" />
+        <activity android:name=".Cong2Activity" />
+        <activity android:name=".VideoLastActivity"></activity>
     </application>
 
 </manifest>

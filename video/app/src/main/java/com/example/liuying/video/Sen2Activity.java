@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-
-public class SenActivity extends AppCompatActivity {
-    public static SenActivity instance;
+public class Sen2Activity extends AppCompatActivity {
 
 
-    @Override
+    public static Sen2Activity instance;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
@@ -21,12 +20,11 @@ public class SenActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //setContentView(new MySurfaceView(this));
 
-        setContentView(R.layout.activity_sen);
+        setContentView(R.layout.activity_sen2);
     }
 
-    public void nextBt(View view){
-        Intent intent = new Intent(this, CongActivity.class);
+    public void nextBtsen2(View view){
+        Intent intent = new Intent(this, Cong2Activity.class);
         startActivity(intent);
     }
-
 }

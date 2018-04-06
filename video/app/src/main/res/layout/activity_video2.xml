@@ -4,28 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SenActivity">
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1" >
-        <com.example.liuying.video.MySurfaceView android:id="@+id/view3d"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"/>
-    </FrameLayout>
-
+    tools:context=".Video2Activity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <Button
-            android:id="@+id/btn_finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FINISH"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:onClick="nextBt" />
-    </RelativeLayout>
+        <com.example.liuying.video.CustomVideoView
+            android:id="@+id/videoview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
+        <Button
+            android:id="@+id/btn_next3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="56dp"
+            android:text="ENTER!" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

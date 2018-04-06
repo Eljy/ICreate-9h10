@@ -26,7 +26,7 @@ import android.view.View;
 import static android.os.SystemClock.sleep;
 
 
-public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback, Runnable {
+public class MySurfaceView2 extends SurfaceView implements SurfaceHolder.Callback, Runnable {
     private SurfaceHolder sfh;
     private Paint paint;
     private Paint eraser;
@@ -58,12 +58,12 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     /**
      * SurfaceView Initialization function
      */
-    public MySurfaceView(Context context, AttributeSet attrs){
+    public MySurfaceView2(Context context, AttributeSet attrs){
         super(context,attrs);
         init();
     }
 
-    public MySurfaceView(Context context){
+    public MySurfaceView2(Context context){
         super(context);
         init();
     }
@@ -75,11 +75,9 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
         paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setAntiAlias(true);
-
-
         eraser = new Paint();
-        eraser.setAlpha(0);
-        eraser.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        eraser.setAlpha(255);
+        eraser.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
 
         setFocusable(true);
         setZOrderOnTop(true);//Put the surfaceview at the top
@@ -137,10 +135,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
             canvas = sfh.lockCanvas();
             if (canvas != null) {
                 canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-                paint.setColor(Color.BLACK);
-                paint.setStrokeWidth(5);
-                canvas.drawCircle(shadow_x, shadow_y, shadow_size, paint);
-                paint.setStrokeWidth(50);
+                paint.setStrokeWidth(20);
                 paint.setColor(Color.RED);
                 if(arc_x<0) arc_x = 0;
                 if(arc_x>screenW-50) arc_x = screenW-50;
@@ -176,16 +171,12 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
                     arc_x = tem_x;
                     arc_y = tem_y;
                     canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-                    paint.setColor(Color.BLACK);
-                    paint.setStrokeWidth(5);
-                    canvas.drawCircle(shadow_x, shadow_y, shadow_size, paint);
-                    paint.setColor(Color.RED);
                     count--;
                 }
 
                 //draw the points
                 paint.setColor(Color.RED);
-
+                /*
                 eraser.setAlpha(0);
                 eraser.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
                 eraser.setAntiAlias(true);
@@ -193,6 +184,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 eraser.setStyle(Paint.Style.STROKE);
                 eraser.setStrokeJoin(Paint.Join.ROUND);
                 eraser.setStrokeWidth(50);
+                */
 
                 //eraser.setAntiAlias(true);
 
@@ -200,7 +192,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 if(arc_x>screenW-50) arc_x = screenW-50;
                 if(arc_y<0) arc_y=0;
                 if(arc_y>screenH-50) arc_y = screenH-50;
-                canvas.drawArc(new RectF(arc_x, arc_y, arc_x + 50, arc_y + 50), 0, 360, true, eraser);
+                canvas.drawArc(new RectF(arc_x, arc_y, arc_x + 50, arc_y + 50), 0, 360, true, paint);
 
                 /*
                 if (al.size()>1000) {
